@@ -7,11 +7,14 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "split": "node split",
-    "sync": "node sync"
+    "sync": "node sync",
+    "merge": "node merge"
   },
   "devDependencies": {
+    "@types/glob": "^7.2.0",
     "@types/node": "^16.11.10",
     "@types/yargs": "^17.0.7",
+    "glob": "^7.2.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {

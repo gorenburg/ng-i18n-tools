@@ -11,10 +11,15 @@ const messagesFilenameGlobPattern = '/**/*.messages.*.json';
 const messagesFilenameRegex = /.messages.(.*).json$/i;
 const messagesNameRegex = /.+?(?=.messages.)/i;
 /**
- * Loading angular file, getting default locale keys; going through other locales to missing translation keys and adding them to the end of locale files
+ * Merges the multiple partial messages files into a single message file per language.
  *
- * @param localesAbsolutePath Absolute path to locales folder
- * @param angularConfigFile Absolute path to angular configuration file
+ * It will recursively find partial message files with pattern '/xx/x.messages.x.json' under the input root folder and
+ * create an output file at the output folder for each of the languages found.
+ *
+ * @param inputRootFolder Input root folder containing partial message files
+ * @param outputFolder Output folder where the merged files will be saved
+ * @param identifierPrefix: Adds a prefix to the translation identifier based on the translation filename (see --id-prefix-strategy)
+ * @param identifierPrefixStrategy: Naming strategy applied to the translation filename to generate the identifier prefix
  */
 function run(inputRootFolder, outputFolder, identifierPrefix, identifierPrefixStrategy) {
     glob_1.default(inputRootFolder + messagesFilenameGlobPattern, {}, (err, messageFilePaths) => {

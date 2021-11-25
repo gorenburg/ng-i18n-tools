@@ -10,3 +10,8 @@ export interface ICompiledTranslationFileData {
   locale: string
   translations: { [key: string]: string }
 }
+
+export interface IArguments {
+  acf: string
+  lp: string
+}

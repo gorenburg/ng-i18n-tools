@@ -2,12 +2,14 @@ import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import getAbsolutePath from '../helpers/get_absolute_path'
 
+import { IArguments } from '../types/sync'
+
 /**
  * Gets the command line arguments.
  *
  * @returns Command line arguments
  */
-export default function getArgs(rawArgs: string[]) {
+export default function getArgs(rawArgs: string[]): IArguments {
   const yargsArgs = yargs(hideBin(rawArgs))
     .options({
       'angular-config-file': {

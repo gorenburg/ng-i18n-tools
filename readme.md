@@ -34,7 +34,7 @@ If managing large file with translations key is a big pain - you can split one l
     "appComponentHelloTitle": "Title",
     "appComponentHelloDescription": "Description",
     "appComponentWorldTitle": "Title",
-    "appComponentWorldDescription": "Description"/src/app/assets/locales
+    "appComponentWorldDescription": "Description"
   }
 ```
 

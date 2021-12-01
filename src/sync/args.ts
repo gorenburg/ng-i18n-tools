@@ -1,3 +1,4 @@
+import path from 'path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import getAbsolutePath from '../helpers/get_absolute_path'
@@ -15,14 +16,20 @@ export default function getArgs(rawArgs: string[]): IArguments {
       'angular-config-file': {
         description: 'Angular configuration pathname with filename',
         alias: 'acf',
-        default: './angular.json',
+        default: path.normalize(`${process.cwd()}/angular.json`),
         type: 'string'
       },
       'locales-path': {
         description: 'Default locales path',
         alias: 'lp',
-        default: './src/assets/locales',
+        default: path.normalize(`${process.cwd()}/src/locale`),
         type: 'string'
+      },
+      'default-fallback': {
+        description: "Fallback to default locale key's value if key is missing in the translation file",
+        alias: 'df',
+        default: false,
+        type: 'boolean'
       }
     })
     .help()
@@ -31,7 +38,8 @@ export default function getArgs(rawArgs: string[]): IArguments {
 
   return {
     acf: getAbsolutePath(yargsArgs.acf as string),
-    lp: getAbsolutePath(yargsArgs.lp as string)
+    lp: getAbsolutePath(yargsArgs.lp as string),
+    df: yargsArgs.df as boolean
   }
 }
 

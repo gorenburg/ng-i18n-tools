@@ -1,3 +1,4 @@
+import path from 'path'
 import getParsedFileData from './get_parsed_file'
 
 export default function getAngularConfigLanguages(filepath: string, overriddenLocalesPath?: string): { [key: string]: string } {
@@ -11,7 +12,7 @@ export default function getAngularConfigLanguages(filepath: string, overriddenLo
     if (projectI18nSettings && projectI18nSettings.locales && Object.keys(projectI18nSettings.locales).length) {
       for (const [key, value] of Object.entries(projectI18nSettings.locales)) {
         if (overriddenLocalesPath) {
-          languages[key] = `${overriddenLocalesPath}/messages.${key}.json`
+          languages[key] = `${path.normalize(overriddenLocalesPath)}/messages.${key}.json`
         } else {
           languages[key] = value as string
         }

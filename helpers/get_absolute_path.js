@@ -14,7 +14,7 @@ const path_1 = __importDefault(require("path"));
  */
 function getAbsolutePath(givenPath) {
     if (path_1.default.isAbsolute(givenPath)) {
-        return givenPath;
+        return path_1.default.normalize(givenPath);
     }
     else {
         return path_1.default.resolve(process.cwd(), givenPath);

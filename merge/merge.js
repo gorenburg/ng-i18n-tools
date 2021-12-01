@@ -43,7 +43,7 @@ function run(inputRootFolder, outputFolder, identifierPrefix, identifierPrefixSt
 function buildLangJsonMap(messageFilePaths, identifierPrefix, identifierPrefixStrategy) {
     let langJsonMap = new Map();
     messageFilePaths.forEach(messageFilePath => {
-        const messageFileContent = fs_1.default.readFileSync(messageFilePath, 'utf8');
+        const messageFileContent = fs_1.default.readFileSync(path_1.default.normalize(messageFilePath), 'utf8');
         const messageJson = JSON.parse(messageFileContent);
         if (identifierPrefix) {
             const filename = getNameFromFilename(messageFilePath);

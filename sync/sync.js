@@ -15,7 +15,7 @@ const translationSettings = {};
  * @param localesAbsolutePath Absolute path to locales folder
  * @param angularConfigFile Absolute path to angular configuration file
  */
-function run(localesAbsolutePath, angularConfigFile) {
+function run(localesAbsolutePath, angularConfigFile, fallbackToDefault = false) {
     localesPath = localesAbsolutePath;
     localeConfigs = get_angular_config_languages_1.default(angularConfigFile, localesPath);
     if (!Object.keys(localeConfigs).length) {
@@ -30,6 +30,9 @@ function run(localesAbsolutePath, angularConfigFile) {
         for (let key in defaultTranslations) {
             if (languageTranslations[key]) {
                 translationSettings[language].translations[key] = languageTranslations[key];
+            }
+            else if (fallbackToDefault) {
+                translationSettings[language].translations[key] = defaultTranslations[key];
             }
             else {
                 translationSettings[language].translations[key] = '';

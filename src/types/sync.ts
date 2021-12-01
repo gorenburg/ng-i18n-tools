@@ -14,4 +14,5 @@ export interface ICompiledTranslationFileData {
 export interface IArguments {
   acf: string
   lp: string
+  df: boolean
 }

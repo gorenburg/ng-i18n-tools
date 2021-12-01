@@ -1,3 +1,4 @@
+import path from 'path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import getAbsolutePath from '../helpers/get_absolute_path'
@@ -15,13 +16,13 @@ export default function getArgs(rawArgs: string[]): IArguments {
       'angular-config-file': {
         description: 'Angular configuration pathname with filename',
         alias: 'acf',
-        default: './angular.json',
+        default: path.normalize(`${process.cwd()}/angular.json`),
         type: 'string'
       },
       'locales-path': {
         description: 'Default locales path',
         alias: 'lp',
-        default: './src/assets/locales',
+        default: path.normalize(`${process.cwd()}/src/locale`),
         type: 'string',
       },
       'file-name-case': {

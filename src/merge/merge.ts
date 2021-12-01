@@ -44,7 +44,7 @@ function run(inputRootFolder: string, outputFolder: string, identifierPrefix: st
   let langJsonMap = new Map()
 
   messageFilePaths.forEach(messageFilePath => {
-    const messageFileContent = fs.readFileSync(messageFilePath, 'utf8')
+    const messageFileContent = fs.readFileSync(path.normalize(messageFilePath), 'utf8')
 
     const messageJson = JSON.parse(messageFileContent);
 

@@ -10,7 +10,7 @@ import path from 'path'
  */
 export default function getAbsolutePath(givenPath: string): string {
   if (path.isAbsolute(givenPath)) {
-    return givenPath
+    return path.normalize(givenPath)
   } else {
     return path.resolve(process.cwd(), givenPath)
   }

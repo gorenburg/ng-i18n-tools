@@ -15,7 +15,7 @@ const translationSettings: ITranslationSettings = {}
  * @param localesAbsolutePath Absolute path to locales folder
  * @param angularConfigFile Absolute path to angular configuration file
  */
-function run(localesAbsolutePath: string, angularConfigFile: string): void {
+function run(localesAbsolutePath: string, angularConfigFile: string, fallbackToDefault = false): void {
   localesPath = localesAbsolutePath
   localeConfigs = getAngularConfigLanguages(angularConfigFile, localesPath)
 
@@ -32,6 +32,8 @@ function run(localesAbsolutePath: string, angularConfigFile: string): void {
     for (let key in defaultTranslations) {
       if (languageTranslations[key]) {
         translationSettings[language].translations[key] = languageTranslations[key]
+      } else if (fallbackToDefault) {
+        translationSettings[language].translations[key] = defaultTranslations[key]
       } else {
         translationSettings[language].translations[key] = ''
       }

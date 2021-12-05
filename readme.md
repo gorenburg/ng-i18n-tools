@@ -2,15 +2,15 @@
 
 Working with Angular translations might be a pain especially with syncing locales & managing the files in general. Each locale might be a huge file with hundreds (or thousands?) of locale strings. This library is trying to help developers and translators to manage the locales with ease with 3 simple tools: sync, split, merge.
 
-**This tool currently supports only `json` translations format and there is no plans of supporting other types of files.**
+**This tool currently supports only `json` translations format and there are no plans of supporting other types of files.**
 
-## Prerequsities
+## Prerequisites
 
 Use `@@appComponentHelloTitle`-like id keys with all your localization - this will allow you to manage locale keys with ease and use this page to maintain them quickly.
 
 ## sync
 
-Sync method synchronizes default locale with other locales you have specified in the `angular.json` file. For example, you wrote the component and added translation keys to it. Now, instead of opening each translation file you just run Angular command to extract default locale (`ng extract-i18n --format json`) and then you run `npm run sync` to add new key strings to all the locale files you have. New keys would be added empty at the end of the file.
+Sync method synchronizes the default locale with other locales you have specified in the `angular.json` file. For example, you wrote the component and added translation keys to it. Now, instead of opening each translation file you just run the Angular command to extract the default locale (`ng extract-i18n --format json`) and then you run `npm run sync` to add new key strings to all the locale files you have. New keys would be added empty at the end of the file.
 
 ### Options
 
@@ -23,11 +23,11 @@ npm run sync --acf '../angular-split/angular.json' --lp '../angular-split/src/as
 |-|-|-|-|-|
 | angular-config-file | acf | string | `./angular.json` | Angular configuration pathname with filename |
 | locales-path | lp | string | `./src/locale` | Default locales path |
-| default-fallback | df | boolean | `false` | Fallback to default locale key's value if key is missing in the translation file. If `true` - missing key's value would be filled with default locale key's value |
+| default-fallback | df | boolean | `false` | Fallback to default locale key's value if a key is missing in the translation file. If `true` - missing key's value would be filled with default locale key's value |
 
 ## split
 
-If managing large file with translations key is a big pain - you can split one large file into small small pieces (just like splitting huge module into small components) and manage locales from there. You would need to use ids for your locales and follow `camelCase` key-naming in order for this method to work. Example:
+If managing a large file with lots of translations key is a big pain - you can split one large file into small pieces (just like splitting a huge module into small components) and manage locales from there. You would need to use ids for your locales and follow `camelCase` key-naming for this method to work. Example:
 
 ```json
   {
@@ -72,7 +72,7 @@ npm run split --acf '../angular-split/angular.json' --lp '../angular-split/src/a
 
 ## merge
 
-*This method is based on original [ng-i18n-merge-files](https://github.com/marcioggs/ng-i18n-merge-files) package by [Márcio Gabriel](https://github.com/marcioggs).*
+*This method is based on original [ng-i18n-merge-files](https://github.com/marcioggs/ng-i18n-merge-files) package by [Márcio Gabriel](https://github.com/marcioggs).*
 
 Merge method takes all your localization files (per locale) and merges them into one file. For example, these files (and others with the same locale):
 
@@ -83,7 +83,7 @@ Merge method takes all your localization files (per locale) and merges them into
 
 Would be merged into one single file: `/src/app/locale/messages.fr.json`
 
-You can also add file name to each key which will allow you to generate unique id keys by running the script with `--i true` param. Example:
+You can also add the filename to each key which will allow you to generate unique id keys by running the script with `--i true` param. Example:
 
 Keys saved in `app.component.hello.messages.${LOCALE}.json`
 

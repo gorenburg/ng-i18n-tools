@@ -1,12 +1,22 @@
 # ng-i18n-tools
 
-Working with Angular translations might be a pain especially with syncing locales & managing the files in general. Each locale might be a huge file with hundreds (or thousands?) of locale strings. This library is trying to help developers and translators to manage the locales with ease with 3 simple tools: sync, split, merge.
+Working with Angular translations might be a pain especially with syncing locales & managing the files in general. Each locale might be a huge file with hundreds (or thousands?) of locale strings. This library is trying to help developers and translators to manage the locales with ease with 3 simple tools: [sync](#sync), [split](#split), [merge](#merge).
 
 **This tool currently supports only `json` translations format and there are no plans of supporting other types of files.**
+
+## Compatibility
+
+Fully compatible with Angular starting v11.
 
 ## Prerequisites
 
 Use `@@appComponentHelloTitle`-like id keys with all your localization - this will allow you to manage locale keys with ease and use this page to maintain them quickly.
+
+## Installation
+
+```bash
+npm install gorenburg/ng-i18n-tools --save-dev
+```
 
 ## sync
 

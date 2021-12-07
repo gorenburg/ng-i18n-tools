@@ -16,13 +16,13 @@ Sync method synchronizes the default locale with other locales you have specifie
 
 Command excution with options example:
 ```bash
-npm run sync --acf '../angular-split/angular.json' --lp '../angular-split/src/assets/locales'
+npx ng-i18n-tools-sync --acf './frontend/angular.json' --lp './frontend/src/locales'
 ```
 
 | Syntax | Alias | Type | Default value | Description |
 |-|-|-|-|-|
 | angular-config-file | acf | string | `./angular.json` | Angular configuration pathname with filename |
-| locales-path | lp | string | `./src/locale` | Default locales path |
+| locales-path | lp | string | `./src/locales` | Default locales path |
 | default-fallback | df | boolean | `false` | Fallback to default locale key's value if a key is missing in the translation file. If `true` - missing key's value would be filled with default locale key's value |
 
 ## split
@@ -61,13 +61,13 @@ After splitting the locales you would need `merge` tool to compile all the files
 
 Command excution with options example:
 ```bash
-npm run split --acf '../angular-split/angular.json' --lp '../angular-split/src/assets/locales'
+npx ng-i18n-tools-split --acf './frontend/angular.json' --lp './frontend/src/locales'
 ```
 
 | Syntax | Alias | Type | Default value | Description |
 |-|-|-|-|-|
 | angular-config-file | acf | string | `./angular.json` | Angular configuration pathname with filename |
-| locales-path | lp | string | `./src/locale` | Default locales path |
+| locales-path | lp | string | `./src/locales` | Default locales path |
 | file-name-case | fnc | string | `dotCase` | File naming case for saved files. `dotCase` would generate files as `app.component.hello.messages.${LOCALE}.json`, `paramCase` would generate files as `app-component-hello.messages.${LOCALE}.json` |
 
 ## merge
@@ -103,7 +103,19 @@ and keys saved in `app.component.world.messages.${LOCALE}.json` as
   }
 ```
 
-would be merged in `messages.${LOCALE}.json` into
+would all be merged in `messages.${LOCALE}.json` into
+
+```json
+{
+  "locale": "LOCALE",
+  "translations": {
+    "Title": "Title 2",
+    "Description": "Description 2"
+  }
+}
+```
+
+If you turn on `id-prefix` to `true`, then the same locale keys would be merged into:
 
 ```json
 {
@@ -122,12 +134,12 @@ would be merged in `messages.${LOCALE}.json` into
 
 Command excution with options example:
 ```bash
-npm run split --acf '../angular-split/angular.json' --lp '../angular-split/src/assets/locales'
+npx ng-i18n-tools-merge --in './frontend/src/locales' --out './frontend/src/locales'
 ```
 
 | Syntax | Alias | Type | Default value | Description |
 |-|-|-|-|-|
-| in | i | string | `./src` | Folder which will be searched recursively for translation files to be merged. |
-| out | o | string | `./src/locale` | Folder where the merged translation files will be saved to. |
+| in | i | string | `./src/locales` | Folder which will be searched recursively for translation files to be merged. |
+| out | o | string | `./src/locales` | Folder where the merged translation files will be saved to. |
 | id-prefix | i | boolean | `false` | Adds a prefix to the translation identifier based on the translation filename (see --id-prefix-strategy) |
 | id-prefix-strategy | s | string | `camelCase` | Naming strategy applied to the translation filename to generate the identifier prefix. `camelCase` would merge filename into `appComponentHelloTitle` key-like; `as-is` would merge in `paramCase`, just like `app-component-hello-title`; `dotCase` would merge as `app.component.hello.title` |

@@ -17,16 +17,13 @@ const translationSettings = {};
  */
 function run(localesAbsolutePath, angularConfigFile, fallbackToDefault = false) {
     localesPath = localesAbsolutePath;
-    localeConfigs = get_angular_config_languages_1.default(angularConfigFile, localesPath);
+    localeConfigs = (0, get_angular_config_languages_1.default)(angularConfigFile, localesPath);
     if (!Object.keys(localeConfigs).length) {
         return;
     }
     const defaultTranslations = getLanguageLocale();
     for (let language in localeConfigs) {
         const languageTranslations = getLanguageLocale(localeConfigs[language], language);
-        if (!Object.keys(languageTranslations).length) {
-            return;
-        }
         for (let key in defaultTranslations) {
             if (languageTranslations[key]) {
                 translationSettings[language].translations[key] = languageTranslations[key];
@@ -54,7 +51,7 @@ function getLanguageLocale(filepath = `${localesPath}/messages.json`, languageCo
         translations: {},
         filepath
     };
-    const parsedLocaleFile = get_parsed_file_1.default(filepath);
+    const parsedLocaleFile = (0, get_parsed_file_1.default)(filepath);
     if (parsedLocaleFile) {
         translationSettings[languageCode].translations = parsedLocaleFile.translations;
         return parsedLocaleFile.translations;

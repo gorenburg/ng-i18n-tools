@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const get_parsed_file_1 = __importDefault(require("./get_parsed_file"));
 function getAngularConfigLanguages(filepath, overriddenLocalesPath) {
-    const fileData = get_parsed_file_1.default(filepath);
+    const fileData = (0, get_parsed_file_1.default)(filepath);
     if (!fileData) {
         return {};
     }

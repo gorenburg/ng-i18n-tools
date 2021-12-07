@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 "use strict";
 const getSyncArgs = require('./sync/args');
 const sync = require('./sync/sync');

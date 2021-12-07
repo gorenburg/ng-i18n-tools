@@ -2,10 +2,11 @@ import fs from 'fs'
 import path from 'path'
 
 export default function getParsedFileData(filepath: string): { [key: string]: any } {
-  if (!fs.existsSync(filepath)) {
-    console.log(`File read error: ${filepath}`)
+  const fileDest = path.normalize(filepath)
+  if (!fs.existsSync(fileDest)) {
+    console.log(`File read error: ${fileDest}`)
   }
 
-  const file = fs.readFileSync(path.normalize(filepath), 'utf8')
+  const file = fs.readFileSync(fileDest, 'utf8')
   return JSON.parse(file)
 }

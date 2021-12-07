@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "ng-i18n-tools-sync": "sync.js",
+    "ng-i18n-tools-split": "split.js",
+    "ng-i18n-tools-merge": "merge.js"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",

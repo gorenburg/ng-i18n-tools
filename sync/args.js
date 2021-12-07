@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const path_1 = __importDefault(require("path"));
 const yargs_1 = __importDefault(require("yargs"));
 const helpers_1 = require("yargs/helpers");
 const get_absolute_path_1 = __importDefault(require("../helpers/get_absolute_path"));
@@ -13,18 +12,18 @@ const get_absolute_path_1 = __importDefault(require("../helpers/get_absolute_pat
  * @returns Command line arguments
  */
 function getArgs(rawArgs) {
-    const yargsArgs = yargs_1.default(helpers_1.hideBin(rawArgs))
+    const yargsArgs = (0, yargs_1.default)((0, helpers_1.hideBin)(rawArgs))
         .options({
         'angular-config-file': {
             description: 'Angular configuration pathname with filename',
             alias: 'acf',
-            default: path_1.default.normalize(`${process.cwd()}/angular.json`),
+            default: './angular.json',
             type: 'string'
         },
         'locales-path': {
             description: 'Default locales path',
             alias: 'lp',
-            default: path_1.default.normalize(`${process.cwd()}/src/locale`),
+            default: './src/locales',
             type: 'string'
         },
         'default-fallback': {
@@ -38,8 +37,8 @@ function getArgs(rawArgs) {
         .alias('help', 'h')
         .parseSync();
     return {
-        acf: get_absolute_path_1.default(yargsArgs.acf),
-        lp: get_absolute_path_1.default(yargsArgs.lp),
+        acf: (0, get_absolute_path_1.default)(yargsArgs.acf),
+        lp: (0, get_absolute_path_1.default)(yargsArgs.lp),
         df: yargsArgs.df
     };
 }

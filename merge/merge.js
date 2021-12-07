@@ -22,7 +22,7 @@ const messagesNameRegex = /.+?(?=.messages.)/i;
  * @param identifierPrefixStrategy: Naming strategy applied to the translation filename to generate the identifier prefix
  */
 function run(inputRootFolder, outputFolder, identifierPrefix, identifierPrefixStrategy) {
-    glob_1.default(inputRootFolder + messagesFilenameGlobPattern, {}, (err, messageFilePaths) => {
+    (0, glob_1.default)(inputRootFolder + messagesFilenameGlobPattern, {}, (err, messageFilePaths) => {
         if (err) {
             console.error(err);
             process.exit(-1);
@@ -85,12 +85,12 @@ function saveToFiles(langJsonMap, outputFolder) {
 */
 function buildKeyName(key, prefixStrategy) {
     if (prefixStrategy === 'as-is') {
-        return change_case_1.paramCase(key);
+        return (0, change_case_1.paramCase)(key);
     }
     if (prefixStrategy === 'dot-case') {
-        return change_case_1.dotCase(key);
+        return (0, change_case_1.dotCase)(key);
     }
-    return change_case_1.camelCase(key);
+    return (0, change_case_1.camelCase)(key);
 }
 /**
 * Extracts name from the filename.

@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const getMergeArgs = require('./merge/args')
 const merge = require('./merge/merge')

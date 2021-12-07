@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 "use strict";
 const getSplitArgs = require('./split/args');
 const split = require('./split/split');

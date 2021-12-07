@@ -17,7 +17,7 @@ let localesPath;
  */
 function run(localesAbsolutePath, angularConfigFile, filenameCase) {
     localesPath = localesAbsolutePath;
-    localeConfigs = get_angular_config_languages_1.default(angularConfigFile, localesPath);
+    localeConfigs = (0, get_angular_config_languages_1.default)(angularConfigFile, localesPath);
     if (!Object.keys(localeConfigs).length) {
         return;
     }
@@ -54,7 +54,7 @@ function splitLocales(filenameCase) {
         * }
         */
         for (let key in parsedDefaultLocale.translations) {
-            const parsedKeyArray = change_case_1.noCase(key).split(' ');
+            const parsedKeyArray = (0, change_case_1.noCase)(key).split(' ');
             if ((parsedKeyArray.length - 1) > 0) {
                 let shortenKeyArray = [...parsedKeyArray];
                 let shortenedKey;

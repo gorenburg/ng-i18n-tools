@@ -27,7 +27,6 @@ function run(localesAbsolutePath: string, angularConfigFile: string, fallbackToD
 
   for (let language in localeConfigs) {
     const languageTranslations = getLanguageLocale(localeConfigs[language], language)
-    if (!Object.keys(languageTranslations).length) { return }
 
     for (let key in defaultTranslations) {
       if (languageTranslations[key]) {

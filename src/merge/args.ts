@@ -1,5 +1,4 @@
 import yargs from 'yargs'
-import path from 'path'
 import { hideBin } from 'yargs/helpers'
 import getAbsolutePath from '../helpers/get_absolute_path'
 
@@ -11,21 +10,18 @@ import { IArguments } from '../types/merge'
  * @returns Command line arguments
  */
 export default function getArgs(rawArgs: string[]): IArguments {
-
-  const srcFolder = path.normalize(`${process.cwd()}/src`)
-
   const yargsArgs = yargs(hideBin(rawArgs))
     .options({
       in: {
         description: 'Folder which will be searched recursively for translation files to be merged.',
         alias: 'i',
-        default: path.normalize(srcFolder),
+        default: './src/locales',
         type: 'string',
       },
       out: {
         description: 'Folder where the merged translation files will be saved to.',
         alias: 'o',
-        default: path.normalize(`${srcFolder}/locale`),
+        default: './src/locales',
         type: 'string',
       },
       'id-prefix': {

@@ -1,8 +1,8 @@
 # ng-i18n-tools
 
-Working with Angular translations might be a pain especially with syncing locales & managing the files in general. Each locale might be a huge file with hundreds (or thousands?) of locale strings. This library is trying to help developers and translators to manage the locales with ease with 3 simple tools: [sync](#sync), [split](#split), [merge](#merge).
+Working with Angular internationalization translations might be a pain especially with syncing locales & managing the files in general. Each locale might be a huge file with hundreds (or thousands?) of locale strings. ng-i18n-tools library is trying to help developers and translators to manage the locales with ease with 3 simple tools: [sync](#sync), [split](#split), [merge](#merge).
 
-**This tool currently supports only `json` translations format and there are no plans of supporting other types of files.**
+**This tool currently supports only `json` translation files format and there are no plans of supporting other types of files.**
 
 ## Compatibility
 
@@ -10,7 +10,7 @@ Fully compatible with Angular starting v11.
 
 ## Prerequisites
 
-Use `@@appComponentHelloTitle`-like id keys with all your localization - this will allow you to manage locale keys with ease and use this page to maintain them quickly.
+Use [id-like keys](https://angular.io/guide/i18n-optional-manage-marked-text) (`@@appComponentHelloTitle`) with all your locale strings - this will allow you to manage and sync translation keys with ease.
 
 ## Installation
 
@@ -20,7 +20,7 @@ npm install gorenburg/ng-i18n-tools --save-dev
 
 ## sync
 
-Sync method synchronizes the default locale with other locales you have specified in the `angular.json` file. For example, you wrote the component and added translation keys to it. Now, instead of opening each translation file you just run the Angular command to extract the default locale (`ng extract-i18n --format json`) and then you run `npm run sync` to add new key strings to all the locale files you have. New keys would be added empty at the end of the file.
+Sync method synchronizes the default locale with other locales you have specified in the `angular.json` file. For example, you wrote the component and added translation keys to it. Now, instead of opening each locale file you just run the Angular command to extract the default locale (`ng extract-i18n --format json`) and then you run `npm run sync` to add new key strings to all the locale files you have. New keys would be added empty at the end of the files.
 
 ### Options
 
@@ -33,11 +33,11 @@ npx ng-i18n-tools-sync --acf './frontend/angular.json' --lp './frontend/src/loca
 |-|-|-|-|-|
 | angular-config-file | acf | string | `./angular.json` | Angular configuration pathname with filename |
 | locales-path | lp | string | `./src/locales` | Default locales path |
-| default-fallback | df | boolean | `false` | Fallback to default locale key's value if a key is missing in the translation file. If `true` - missing key's value would be filled with default locale key's value |
+| default-fallback | df | boolean | `false` | Fallback to default locale translation key values if a key is missing in the translation file. If `true` - missing key's value would be filled with default locale key's value |
 
 ## split
 
-If managing a large file with lots of translations key is a big pain - you can split one large file into small pieces (just like splitting a huge module into small components) and manage locales from there. You would need to use ids for your locales and follow `camelCase` key-naming for this method to work. Example:
+If managing a large file with lots of translation keys is a big pain - you can split one large file into small pieces (just like splitting a huge module into small components) and manage locales from there. You would need to use ids for your locales and follow `camelCase` key-naming for this method to work. Example:
 
 ```json
   {
